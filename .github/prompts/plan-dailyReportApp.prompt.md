@@ -15,6 +15,15 @@ tools: [vscode, execute, read, agent, edit, search, web, 'microsoftdocs/mcp/*', 
 3. Microsoft公式情報は `microsoftdocs/mcp/*` を優先して参照すること
 4. 出力は他のAIエージェントが実行できる粒度で具体化すること
 
+### Azure MCP利用ルール
+
+- `azure-mcp/search` では「対象技術 + 観点」を含む検索クエリを使用すること
+- 例:
+  - `Azure OpenAI FastAPI 認証方式 managed identity API key ベストプラクティス`
+  - `Azure App Service FastAPI スケーリング 設定 推奨`
+  - `Azure OpenAI コスト最適化 レート制限 監視`
+- 調査結果は「要点」「採用判断」「根拠」に分けて設計へ反映すること
+
 ## 作成対象
 
 - `docs/spec/design.md`
@@ -23,7 +32,11 @@ tools: [vscode, execute, read, agent, edit, search, web, 'microsoftdocs/mcp/*', 
 ## 実行手順
 
 1. 要件確認: `docs/spec/requirements.md` からMVPの必須要件と制約を抽出
-2. Azure調査: Azure OpenAI / FastAPI on Azure App Service の実装・運用注意点を Azure MCP で確認
+2. Azure調査: Azure OpenAI / FastAPI on Azure App Service について、少なくとも以下を Azure MCP で確認
+   - 認証方式（API Key / Managed Identity）
+   - スケーリングと可用性設計
+   - コスト最適化（レート制限、利用量監視）
+   - セキュリティベストプラクティス（秘密情報管理、ネットワーク制御）
 3. 設計作成: `docs/spec/design.md` にアーキテクチャ、データフロー、エラーハンドリング、テスト戦略を定義
 4. タスク分解: `docs/spec/tasks.md` に依存関係付きの実装タスクを作成
 5. 検証: 要件IDとのトレーサビリティ（REQ ↔ TASK）を明示して抜け漏れを確認
