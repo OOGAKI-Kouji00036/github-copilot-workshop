@@ -162,3 +162,63 @@ Copilot が生成するコードのスタイルや品質基準を定義します
 | ファイル | 概要 |
 |----------|------|
 | [docs/daily-report-app-meeting.md](docs/daily-report-app-meeting.md) | 日報アプリ開発の会議議事録サンプル |
+
+## 日報生成MVP（React + FastAPI + Azure OpenAI）
+
+このリポジトリには、スクリーンショット画像から日報を生成するMVP実装を追加できます。
+
+### ディレクトリ構成
+
+```text
+backend/   # FastAPI API
+frontend/  # React (Vite) UI
+docs/spec/ # 仕様駆動ワークフロー成果物
+```
+
+### 1. バックエンド起動
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+```
+
+`.env` に以下を設定してください。
+
+```env
+AZURE_OPENAI_ENDPOINT=https://<your-resource>.openai.azure.com/
+AZURE_OPENAI_API_KEY=<your-key>
+AZURE_OPENAI_DEPLOYMENT=<your-deployment-name>
+AZURE_OPENAI_API_VERSION=2024-08-01-preview
+```
+
+起動:
+
+```bash
+uvicorn app.main:app --reload --port 8000
+```
+
+### 2. フロントエンド起動
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+ブラウザで `http://localhost:5173` を開くと利用できます。
+
+### 3. テスト
+
+```bash
+cd backend
+source .venv/bin/activate
+pytest -q
+```
+
+### セキュリティ注意
+
+- APIキーは絶対にソースコードに埋め込まないでください。
+- `.env` はGit管理に含めず、必要に応じてキーをローテーションしてください。
