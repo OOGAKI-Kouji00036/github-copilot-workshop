@@ -141,6 +141,7 @@ Copilot が生成するコードのスタイルや品質基準を定義します
 |----------|------|
 | [comment-code-generate-a-tutorial.prompt.md](.github/prompts/comment-code-generate-a-tutorial.prompt.md) | コードに日本語コメントを追加し、初心者向けチュートリアルを生成 |
 | [create-implementation-plan.prompt.md](.github/prompts/create-implementation-plan.prompt.md) | AI 最適化された実装計画を自動生成 |
+| [plan-dailyReportApp.prompt.md](.github/prompts/plan-dailyReportApp.prompt.md) | Azure MCPを活用して日報アプリMVPの仕様駆動実装計画を作成 |
 | [create-github-issues-feature-from-implementation-plan.prompt.md](.github/prompts/create-github-issues-feature-from-implementation-plan.prompt.md) | 実装計画から GitHub Issue を自動作成 |
 
 ## MCP サーバー設定
